@@ -141,7 +141,7 @@ public class PongOsx : PhysicsGame
 	{
 		IntMeter laskuri = new IntMeter(0);
 		laskuri.MaxValue = 10;
-		laskuri.AddTrigger(10, TriggerDirection.Irrelevant, GameOver);
+		laskuri.AddTrigger(1, TriggerDirection.Irrelevant, GameOver);
 
 		Label naytto = new Label();
 		naytto.BindTo(laskuri);
@@ -157,6 +157,19 @@ public class PongOsx : PhysicsGame
 
 	void GameOver()
 	{
-
+        StopAll();
+        Label gameOver = new Label(
+            600.0,
+            200.0,
+            "Game over!"
+        );
+        gameOver.TextColor = Color.White;
+        Add(gameOver);
+        Keyboard.Clear();
+        Keyboard.Listen(Key.Enter, ButtonState.Pressed, SuljePeli, "Lopeta");
 	}
+
+    void SuljePeli() {
+        Exit();
+    }
 }
