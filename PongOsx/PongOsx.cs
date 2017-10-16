@@ -158,10 +158,19 @@ public class PongOsx : PhysicsGame
 	void GameOver()
 	{
         StopAll();
+		String voittoTeksti;
+
+        if(pelaajan1pisteet.Value > pelaajan2pisteet.Value)
+        {
+            voittoTeksti = "Game over, Player 1 wins!!";
+        } else {
+            voittoTeksti = "Game over, Player 2 wins!!";
+        }
+
         Label gameOver = new Label(
             600.0,
             200.0,
-            "Game over!"
+            voittoTeksti
         );
         gameOver.TextColor = Color.White;
         Add(gameOver);
